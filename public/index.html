@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>ChatENGER App with Neon Cursor</title>
+    <style>
+        /* Make sure the body and html take up the full viewport */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: black; /* Background color to make the neon effect stand out */
+        }
+        .join-container {
+            position: relative;
+            z-index: 1; /* Ensure it is above any background elements */
+            color: white;
+        }
+        .join-header, .join-main {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="join-container">
+        <header class="join-header">
+            <h1><i class="fas fa-smile"></i> ChatENGER</h1>
+        </header>
+        <main class="join-main">
+            <form action="chat.html">
+                <div class="form-control">
+                    <label for="username">Username</label>
+                    <input
+                        type="text"
+                        name="username"
+                        id="username"
+                        placeholder="Enter username..."
+                        required
+                    />
+                </div>
+                <div class="form-control">
+                    <label for="room">Room</label>
+                    <select name="room" id="room">
+                        <option value="Musics">Musics</option>
+                        <option value="Technology">Technology</option>
+                        <option value="Book">Book</option>
+                        <option value="Movies/Series">Movies/Series</option>
+                        <option value="Pets">Pets</option>
+                        <option value="Hobbies">Hobbies</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Random">Random</option>
+                        <option value="Business">Business</option>
+                        <option value="Family">Family</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn">Join Chat</button>
+            </form>
+        </main>
+    </div>
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous"
+    />
+    <title>ChatENGER App with Neon Cursor</title>
+    <style>
+        /* Make sure the body and html take up the full viewport */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: black; /* Background color to make the neon effect stand out */
+        }
+        .join-container {
+            position: relative;
+            z-index: 1; /* Ensure it is above the canvas */
+            color: white;
+            text-align: center;
+        }
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0; /* Set canvas below other elements */
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+
+
+    <!-- Include the threejs-toys module -->
+    <script type="module">
+        import { neonCursor } from 'https://unpkg.com/threejs-toys@0.0.8/build/threejs-toys.module.cdn.min.js';
+
+        // Initialize the neon cursor effect
+        neonCursor({
+            el: document.body, // Apply to body for full page
+            shaderPoints: 16,
+            curvePoints: 80,
+            curveLerp: 0.5,
+            radius1: 5,
+            radius2: 30,
+            velocityTreshold: 10,
+            sleepRadiusX: 100,
+            sleepRadiusY: 100,
+            sleepTimeCoefX: 0.0025,
+            sleepTimeCoefY: 0.0025
+        });
+
+        // Get the canvas and context
+        const canvas = document.getElementById('drawingCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Set canvas dimensions
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // Drawing variables
+        let isDrawing = false;
+
+        // Start drawing on mousedown
+        canvas.addEventListener('mousedown', (e) => {
+            isDrawing = true;
+            ctx.beginPath();
+            ctx.moveTo(e.clientX, e.clientY);
+        });
+
+        // Draw on mousemove
+        canvas.addEventListener('mousemove', (e) => {
+            if (!isDrawing) return;
+            ctx.lineTo(e.clientX, e.clientY);
+            ctx.strokeStyle = 'white'; // Color of the drawing
+            ctx.lineWidth = 5; // Width of the drawing
+            ctx.stroke();
+        });
+
+        // Stop drawing on mouseup or mouseleave
+        canvas.addEventListener('mouseup', () => {
+            isDrawing = false;
+            ctx.closePath();
+        });
+
+        canvas.addEventListener('mouseleave', () => {
+            isDrawing = false;
+            ctx.closePath();
+        });
+
+        // Resize the canvas when the window is resized
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            ctx.fillStyle = 'black'; // Background color
+            ctx.fillRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+        });
+    </script>
+</body>
+</html>

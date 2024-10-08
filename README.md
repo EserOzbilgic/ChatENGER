@@ -3,7 +3,7 @@
 A real-time chat application built with Node.js, Express, and Socket.io. This app allows users to join chat rooms, send messages, and see who else is in the room.
 ## Youtube Link : https://www.youtube.com/watch?v=3TBu5JadjaY
 
-## Lefting Chat ss
+## Lefting Chat Image
 <img width="1177" alt="Lefting chat" src="https://github.com/user-attachments/assets/612377ef-9e17-4b7a-8abb-5d0fe7b85ef2">
 
 

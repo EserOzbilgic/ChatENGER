@@ -4,7 +4,8 @@ A real-time chat application built with Node.js, Express, and Socket.io. This ap
 ## Youtube Link : https://www.youtube.com/watch?v=3TBu5JadjaY
 
 ## Lefting Chat ss
-![Uploading Ekran Resmi 2024-10-08 22.26.53.png…]()
+![Uploading Lefting chat.png…]()
+
 
 
 ## Table of Contents
